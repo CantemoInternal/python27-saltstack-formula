@@ -43,6 +43,7 @@ python27:
       - cmd: get-python27
     - require:
       - cmd: get-python27
+    - run
 
 get-ez:
   file.managed:
