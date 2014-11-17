@@ -20,7 +20,7 @@ get-python27:
     - name: tar xf {{ python27_package }}
     - watch:
       - file: get-python27
-      - pkg: linux-dev-pkg
+      - pkg: linux-dev-pkgs
 
 python27:
   cmd.wait:
@@ -41,7 +41,7 @@ get-ez:
     - cwd: {{ source }}
     - name: /usr/local/python /bin/activate && python ez_setup_setup.py
     - watch:
-      - file: get-distribute
+      - file: get-ez
 
 get-pip:
   cmd.wait:
