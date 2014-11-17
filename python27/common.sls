@@ -1,3 +1,3 @@
 /usr/src:
-    - file:
+    file:
         - directory
