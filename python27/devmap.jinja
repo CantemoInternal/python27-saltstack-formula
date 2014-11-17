@@ -1,0 +1,55 @@
+{% set python27 = pillar.get('python27', {}) -%}
+{% set version = python27.get('version', '2.7.8') -%}
+{% set checksum = python27.get('checksum', 'md5=7dffe775f3bea68a44f762a3490e5e28') -%}
+{% set python27_package = '{0}/Python-{1}.tar.xz'.format(source, version) -%}
+{% set source = python27.get('source_root', '/usr/src') -%}
+
+{% set linux_dev_pkgs = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [
+            'build-essential',
+            'libsqlite3-dev',
+            'sqlite3',
+            'bzip2',
+            'libbz2-dev',
+        ],
+    },
+    'RedHat': {
+        'pkgs': [
+            'Development tools',
+            'rpmdevtools',
+            'fedora-packager',
+            'make',
+            "libxml2-devel", 
+            "libxslt-devel",
+            "libevent-devel", 
+            "zlib-devel",
+            "bzip2-devel",
+            "openssl-devel", 
+            "ncurses-devel",
+            "sqlite-devel",
+            readline-devel"
+            "tk-devel", 
+            "gdbm-devel", 
+            "db4-devel", 
+            "libpcap-devel", 
+            "xz-devel",
+            "libpng-devel", 
+            "libjpeg-turbo-devel",
+            "mlocate",
+            "openldap-devel",
+        ],
+    },
+}, merge=salt['pillar.get']('linux_dev_pkgs:lookup')) %}
+
+get-python27:
+  file.managed:
+    - name: {{ python27_package }}
+    - source: http://python.org/ftp/python/{{ version }}/Python-{{ version }}.tar.xz
+    - source_hash: {{ checksum }}
+  cmd.wait:
+    - cwd: {{ source }}
+    - name: tar jxf {{ python3_package }}
+    - watch:
+      - file: get-python3
+      - pkg: dev-pkg
