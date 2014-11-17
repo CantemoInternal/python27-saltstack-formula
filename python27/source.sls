@@ -6,6 +6,7 @@
 
 {% from "python27/devmap.jinja" import linux_dev_pkgs with context %}
 
+{% if grains['os_family'] == "RedHat" %}
 # Needs one of the later salt installations
 linux-dev-environment:
     module.run:
@@ -13,6 +14,7 @@ linux-dev-environment:
         - m_name: 'development'
         - require_in:
             - cmd: python27
+{% endif %}
 
 linux-dev-pkgs:
   pkg.installed:
@@ -35,7 +37,8 @@ python27:
     - cwd: {{ source }}/Python-{{ version }}
     - names:
       - ./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
-      - make && make install
+      - make 
+      - make install
     - watch:
       - cmd: get-python27
     - require:
