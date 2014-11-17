@@ -1,8 +1,8 @@
 {% set python27 = pillar.get('python27', {}) -%}
 {% set version = python27.get('version', '2.7.8') -%}
 {% set checksum = python27.get('checksum', 'md5=d235bdfa75b8396942e360a70487ee00') -%}
-{% set python27_package = '{0}/Python-{1}.tar.xz'.format(source, version) -%}
 {% set source = python27.get('source_root', '/usr/src') -%}
+{% set python27_package = '{0}/Python-{1}.tar.xz'.format(source, version) -%}
 
 {% from "python27/devmap.jinja" import linux_dev_pkgs with context %}
 
