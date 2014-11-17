@@ -6,10 +6,13 @@
 
 {% from "python27/devmap.jinja" import linux_dev_pkgs with context %}
 
+# Needs one of the later salt installations
 linux-dev-environment:
-  pkg.group_install:
-    - pkgs:
-        - 'Development tools'
+    module.run:
+        - name: pkg.group_install
+        - m_name: 'Development tools'
+        - require_in:
+            - cmd: python27
 
 linux-dev-pkgs:
   pkg.installed:
