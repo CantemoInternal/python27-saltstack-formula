@@ -35,8 +35,7 @@ get-python27:
 python27:
   cmd.run:
     - cwd: {{ source }}/Python-{{ version }}
-    - name:
-      - ./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"; make && make install 
+    - name: ./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"; make && make install 
 #    - watch:
 #      - cmd: get-python27
     - require:
