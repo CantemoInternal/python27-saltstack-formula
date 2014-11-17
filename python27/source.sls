@@ -10,7 +10,7 @@
 linux-dev-environment:
     module.run:
         - name: pkg.group_install
-        - m_name: 'Development tools'
+        - m_name: 'development'
         - require_in:
             - cmd: python27
 
