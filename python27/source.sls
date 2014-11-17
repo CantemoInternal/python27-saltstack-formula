@@ -50,7 +50,7 @@ get-pip:
     - required:
       - file: get-ez
 
-get-virtualenv
+get-virtualenv:
   cmd.wait:
     - cwd: {{ source }}
     - name: pip install virtualenv
