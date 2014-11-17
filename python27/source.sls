@@ -20,7 +20,7 @@ get-python27:
     - name: tar xf {{ python27_package }}
     - watch:
       - file: get-python27
-      - pkg: dev-pkg
+      - pkg: linux-dev-pkg
 
 python27:
   cmd.wait:
