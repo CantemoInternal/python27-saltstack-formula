@@ -8,7 +8,8 @@
 
 linux-dev-environment:
   pkg.group_install:
-    - 'Development tools'
+    - pkgs:
+        - 'Development tools'
 
 linux-dev-pkgs:
   pkg.installed:
