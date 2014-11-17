@@ -33,7 +33,7 @@ get-python27:
       - pkg: linux-dev-pkgs
 
 python27:
-  cmd:
+  cmd.run:
     - cwd: {{ source }}/Python-{{ version }}
     - names:
       - ./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
@@ -43,7 +43,6 @@ python27:
       - cmd: get-python27
     - require:
       - cmd: get-python27
-    - run
 
 get-ez:
   file.managed:
