@@ -33,7 +33,7 @@ get-python27:
       - pkg: linux-dev-pkgs
 
 python27:
-  cmd.wait:
+  cmd:
     - cwd: {{ source }}/Python-{{ version }}
     - names:
       - ./configure --prefix=/usr/local --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
