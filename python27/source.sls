@@ -7,9 +7,10 @@
 {% from "python27/devmap.jinja" import linux_dev_pkgs with context %}
 
 linux-dev-environment:
-  yumpkg.group_install:
-    - pkgs:
-        - 'Development tools'
+  pkg:
+    - group_install:
+        - pkgs:
+            - 'Development tools'
 
 linux-dev-pkgs:
   pkg.installed:
