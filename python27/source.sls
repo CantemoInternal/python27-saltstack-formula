@@ -7,7 +7,7 @@
 {% from "python27/devmap.jinja" import linux_dev_pkgs with context %}
 
 linux-dev-pkgs:
-  pkg.group_install
+  pkg.group_install:
     - 'Development Tools'
   pkg.installed:
     - pkgs: {{ linux_dev_pkgs.pkgs|json }}
